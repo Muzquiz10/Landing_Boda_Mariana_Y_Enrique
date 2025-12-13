@@ -57,27 +57,27 @@ if (name) {
 let message = "Queremos compartir contigo un día muy especial para nosotros.";
 
 if (type === "familia") {
-  message = "Querido miembro de la familia,\nNos llena de felicidad invitarte a nuestra boda y ser parte de este momento tan significativo en nuestras vidas.\nA continuación te dejamos los detalles de la boda.";
+  message = "Querido miembro de la familia,\n\nNos llena de felicidad invitarte a nuestra boda y ser parte de este momento tan significativo en nuestras vidas.\nA continuación te dejamos los detalles de la boda.";
 }
 
 if (type === "amigos") {
-  message = "Querido amigo/a,\nMuchas gracias por todas las vivencias que hemos compartido y esperamos poder contar con tu presencia en el día de nuestra boda.\nA continuación te dejamos los detalles de la boda.";
+  message = "Querido amigo/a,\n\nMuchas gracias por todas las vivencias que hemos compartido y esperamos poder contar con tu presencia en el día de nuestra boda.\nA continuación te dejamos los detalles de la boda.";
 }
 
 if (type === "padrino_Jhan"){
-  message = "Querido padrino y acompañantes,\nComo persona especial, nos complace informarte a ti a Cinthia, Arely y Anita de los detalles de nuestra boda.";
+  message = "Querido padrino y acompañantes,\n\nComo persona especial, nos complace informarte a ti a Cinthia, Arely y Anita de los detalles de nuestra boda.";
 }
 
 if (type === "padrino_Luis"){
-  message = "Querido padrino y acompañate,\nComo persona especial, nos complace informarte a ti y a Maricarmen de los detalles de nuestra boda.";
+  message = "Querido padrino y acompañate,\n\nComo persona especial, nos complace informarte a ti y a Maricarmen de los detalles de nuestra boda.";
 }
 
 if (type === "mama"){
-  message = "Querida mamá,\nComo persona especial, nos complace informarte a ti de nuestra boda.";
+  message = "Querida mamá,\n\nComo persona especial, nos complace informarte a ti de nuestra boda.";
 }
 
 if (type === "hermano"){
-  message = "Querido hermano y Esme,\nComo persona especial, nos complace informarte a ti de nuestra boda.";
+  message = "Querido hermano y Esme,\n\nComo persona especial, nos complace informarte a ti de nuestra boda.";
 }
 
 messageEl.innerText = message;
