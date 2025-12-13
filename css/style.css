@@ -20,6 +20,7 @@ body {
   font-family: 'Dancing Script', cursive !important;
   font-size: 3rem;
   line-height: 1.2;
+  color: #e4ba3a;
   margin-bottom: 10px;
 }
 
@@ -31,7 +32,7 @@ body {
 }
 
 .subtitle {
-  color: #777;
+  color: #646664;
   margin-bottom: 40px;
 }
 
@@ -74,5 +75,5 @@ body {
 .footer {
   margin-top: 50px;
   font-size: 0.9rem;
-  color: #888;
+  color: #646664;
 }
