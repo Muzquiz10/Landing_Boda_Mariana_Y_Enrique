@@ -7,7 +7,7 @@ const title = document.getElementById("title");
 const messageEl = document.getElementById("message");
 
 if (name) {
-  title.innerText = `${name}, nos casamos 💍`;
+  title.innerText = `Invitación de ${name} 💍`;
 }
 
 let message = "Queremos compartir contigo un día muy especial para nosotros.";
@@ -18,6 +18,10 @@ if (type === "familia") {
 
 if (type === "amigos") {
   message = "Después de tantas risas y momentos inolvidables, queremos celebrarlo contigo.";
+}
+
+if (type === "padrinos"){
+  message = "Mensaje padrinos"
 }
 
 messageEl.innerText = message;
