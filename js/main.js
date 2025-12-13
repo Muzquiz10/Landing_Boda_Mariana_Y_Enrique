@@ -21,11 +21,11 @@ if (name) {
 let message = "Queremos compartir contigo un día muy especial para nosotros.";
 
 if (type === "familia") {
-  message = "Querido miembro de la familia,\n\nNos llena de felicidad invitarte a nuestra boda y ser parte de este momento tan significativo en nuestras vidas.\nA continuación te dejamos los detalles de nuestra boda.";
+  message = "Querido miembro de la familia,\n\nNos llena de felicidad invitarte a nuestra boda y ser parte de este momento tan significativo en nuestras vidas.\nA continuación te dejamos los detalles.";
 }
 
 if (type === "amigos") {
-  message = "Querido amigo/a,\n\nMuchas gracias por todas las vivencias que hemos compartido juntos y esperamos poder contar con tu presencia en el día de nuestra boda.\nA continuación te dejamos los detalles de nuestra boda.";
+  message = "Querido amigo/a,\n\nMuchas gracias por todas las vivencias que hemos compartido juntos y esperamos poder contar con tu presencia en el día de nuestra boda.\nA continuación te dejamos los detalles.";
 }
 
 if (type === "padrino_Jhan"){
