@@ -1,0 +1,5 @@
+[
+  { "nombre": "Luis", "tipo": "padrino" },
+  { "nombre": "Asun", "tipo": "familia" },
+  { "nombre": "Juan", "tipo": "amigo" }
+]

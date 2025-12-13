@@ -13,15 +13,24 @@ if (name) {
 let message = "Queremos compartir contigo un día muy especial para nosotros.";
 
 if (type === "familia") {
-  message = "Mensaje familia.";
+  message = "Querido miembro de la familia,\nNos llena de felicidad invitarte a nuestra boda y ser parte de este momento tan significativo en nuestras vidas.\nA continuación te dejamos los detalles de la boda.";
 }
 
 if (type === "amigos") {
-  message = "mensaje amigos.";
+  message = "Querido amigo\a,\n Muchas gracias por todas las vivencias que hemos compartido y esperamos poder contar con tu presencia en el día de nuestra boda\nA continuación te dejamos los detalles de la boda.";
 }
 
-if (type === "padrinos"){
-  message = "Querido padrino y acompañate/s\nNos llena de felicidad...";
+if (type === "padrino_Jhan"){
+  message = "Querido padrino y acompañates,\nComo persona especial, nos complace informarte a ti a Cinthia, Arely y Anita de los detalles de nuestra boda.";
+}
+if (type === "padrino_Luis"){
+  message = "Querido padrino y acompañate,\nComo persona especial, nos complace informarte a ti y a Maricarmen de los detalles de nuestra boda.";
 }
 
-messageEl.innerText = message;
+if (type === "mama"){
+  message = "Querida mamá,\nComo persona especial, nos complace informarte a ti de nuestra boda.";
+}
+
+if (type === "hermano"){
+  message = "Querido hermano y Esme,\nComo persona especial, nos complace informarte a ti de nuestra boda.";
+}
