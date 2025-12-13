@@ -7,22 +7,22 @@ const title = document.getElementById("title");
 const messageEl = document.getElementById("message");
 
 if (name) {
-  title.innerText = `Invitación de ${name} 💍`;
+  title.innerText = `Invitación de boda de Mariana y Enrique para ${name} 💍`;
 }
 
 let message = "Queremos compartir contigo un día muy especial para nosotros.";
 
 if (type === "familia") {
-  message = "Gracias por estar a nuestro lado desde el principio. Este día no tendría sentido sin ti.";
+  message = "Mensaje familia.";
 }
 
 if (type === "amigos") {
-  message = "Después de tantas risas y momentos inolvidables, queremos celebrarlo contigo.";
+  message = "mensaje amigos.";
 }
 
 if (type === "padrinos"){
-  message = "Mensaje padrinos"
+  message = "Querido padrino y acompañate/s\n"
+             "Prueba"
 }
 
 messageEl.innerText = message;
-
