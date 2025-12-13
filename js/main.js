@@ -21,8 +21,7 @@ if (type === "amigos") {
 }
 
 if (type === "padrinos"){
-  message = "Querido padrino y acompañate/s\n
-             Prueba"
+  message = "Querido padrino y acompañate/s\nNos llena de felicidad..."
 }
 
 messageEl.innerText = message;
