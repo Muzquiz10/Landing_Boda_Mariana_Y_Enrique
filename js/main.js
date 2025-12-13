@@ -13,7 +13,7 @@ const messageEl = document.getElementById("message");
 
 if (name) {
   
-  title.innerText = {name}
+  title.innerText = ${name}
   // title.innerText = `Invitación de boda de Mariana y Enrique para ${name} 💍`;
   
 }

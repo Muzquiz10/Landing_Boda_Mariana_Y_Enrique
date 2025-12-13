@@ -23,6 +23,13 @@ body {
   margin-bottom: 10px;
 }
 
+.hero h2 {
+  font-family: 'Dancing Script', cursive !important;
+  font-size: 3rem;
+  line-height: 1.2;
+  margin-bottom: 10px;
+}
+
 .subtitle {
   color: #777;
   margin-bottom: 40px;
