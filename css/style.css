@@ -8,11 +8,21 @@ body {
   background-color: #f8f5f2;
   background-image: url('../assets/IMG/fondo.png');
   background-repeat: no-repeat;
-  background-position: top center;
+  background-position: center center;
   background-size: cover;
   color: #333;
+  min-height: 100vh;
   /* background: linear-gradient(180deg, #f8f5f2, #ffffff); */
  
+}
+
+/* MEDIA QUERIES PARA MÓVIL */
+@media (max-width: 768px) {
+  body {
+    /* Ajustamos el foco del fondo para que se vean las flores */
+    background-position: center top;
+    background-size: cover;
+  }
 }
 
 .container {
