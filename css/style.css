@@ -12,8 +12,6 @@ body {
   background-size: cover;
   color: #333;
   min-height: 100vh;
-  /* background: linear-gradient(180deg, #f8f5f2, #ffffff); */
- 
 }
 
 /* MEDIA QUERIES PARA MÓVIL */
@@ -32,7 +30,6 @@ body {
     background-size: cover;
   }
 }
-
 
 .container {
   max-width: 800px;
@@ -154,7 +151,7 @@ body {
 .footer {
   margin-top: 50px;
   font-size: 0.9rem;
-  color: #efa2a8;
+  color: #7598c5;
 }
 
 .reveal {
