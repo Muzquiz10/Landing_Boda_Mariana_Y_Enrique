@@ -27,7 +27,7 @@ body {
 
 @media (max-width: 768px) {
   body {
-    background-image: url('../assets/IMG/fondo.png');
+    background-image: url('../assets/IMG/fondo_movil_format.png');
     background-position: center center;
     background-size: cover;
   }
