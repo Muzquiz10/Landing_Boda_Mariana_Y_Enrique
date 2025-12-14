@@ -5,8 +5,14 @@
 body {
   margin: 0;
   font-family: 'Lora', sans-serif;
-  background: linear-gradient(180deg, #f8f5f2, #ffffff);
+  background-color: #f8f5f2;
+  background-image: url('../assets/IMG/fondo.png');
+  background-repeat: no-repeat;
+  background-position: top center;
+  background-size: cover;
   color: #333;
+  /* background: linear-gradient(180deg, #f8f5f2, #ffffff); */
+ 
 }
 
 .container {
@@ -20,7 +26,7 @@ body {
 
 .hero h1 {
   font-family: 'Dancing Script', cursive !important;
-  font-size: 3rem;
+  font-size: 4rem;
   line-height: 1.2;
   color: #e4ba3a;
   margin-bottom: 10px;
@@ -41,7 +47,9 @@ body {
 /* CARD */
 
 .card {
-  background: #fff;
+  background: rgba(255, 255, 255, 0.4);
+  backdrop-filter: blur(4px);
+  -webkit-backdrop-filter: blur(4px);
   border-radius: 20px;
   padding: 40px 30px;
   box-shadow: 0 20px 40px rgba(0,0,0,0.06);
