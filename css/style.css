@@ -20,7 +20,7 @@ body {
 @media (max-width: 768px) {
   body {
     /* Ajustamos el foco del fondo para que se vean las flores */
-    background-position: center top;
+    background-position: center center;
     background-size: cover;
   }
 }
