@@ -1,5 +1,3 @@
-// NEW CODE
-
 document.addEventListener("DOMContentLoaded", () => {
 
   /* ===============================
@@ -13,20 +11,30 @@ document.addEventListener("DOMContentLoaded", () => {
 
   // Reemplazar guiones bajos por espacios
 if (name) {
-  name = name
-    .replace(/_/g, " ")
-    .replace(/\s+y\s+/gi, " y ")
-    .replace(/\s+e\s+/gi, " e ");
+  // Paso 1: dividir por "_e_" o "_y_"
+  let separator = null;
 
-  // Añade coma si hay más de dos palabras antes del "y"
-  if (name.includes(" y ")) {
-    const parts = name.split(" y ");
-    if (parts[0].split(" ").length > 1) {
-      parts[0] = parts[0].replace(/(\w+)\s+(\w+)$/, "$1, $2");
-    }
-    name = parts.join(" y ");
+  if (name.includes("_e_")) separator = "_e_";
+  if (name.includes("_y_")) separator = "_y_";
+
+  if (separator) {
+    const parts = name.split(separator);
+
+    // Parte izquierda: personas separadas por "_"
+    const people = parts[0].split("_").join(", ");
+
+    // Parte derecha: colectivo o última persona
+    const last = parts[1].replace(/_/g, " ");
+
+    name = separator === "_e_"
+      ? `${people} e ${last}`
+      : `${people} y ${last}`;
+  } else {
+    // Caso simple (una sola persona)
+    name = name.replace(/_/g, " ");
   }
 }
+
 
 
   const title = document.getElementById("title");
