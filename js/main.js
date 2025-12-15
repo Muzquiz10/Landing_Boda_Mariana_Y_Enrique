@@ -12,9 +12,12 @@ document.addEventListener("DOMContentLoaded", () => {
   const type = params.get("type");
 
   // Reemplazar guiones bajos por espacios
-  if (name) {
-    name = name.replace(/_/g, " ");
-  }
+if (name) {
+  name = name
+    .replace(/_/g, " ")           // Underscore → espacio
+    .replace(/\s+y\s+/gi, ", y ") // " y " → ", y "
+    .replace(/\s+e\s+/gi, " e "); // mantiene " e " sin coma
+}
 
   const title = document.getElementById("title");
   const messageEl = document.getElementById("message");
@@ -46,7 +49,7 @@ document.addEventListener("DOMContentLoaded", () => {
   }
 
   if (type === "hermano") {
-    message = "Querido hermano y Esme,\n\nComo persona especial, nos complace informarte de los detalles de nuestra boda.";
+    message = "Querido Luis y Esme,\n\nComo persona especial, nos complace informarte de los detalles de nuestra boda.";
   }
 
   messageEl.innerText = message;
