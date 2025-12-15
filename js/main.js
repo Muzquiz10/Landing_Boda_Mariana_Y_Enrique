@@ -15,7 +15,7 @@ document.addEventListener("DOMContentLoaded", () => {
 if (name) {
   name = name
     .replace(/_/g, " ")           // Underscore → espacio
-    .replace(/\s+y\s+/gi, ", y ") // " y " → ", y "
+    .replace(/\s+y\s+/gi, ", y ") // " y " → " y "
     .replace(/\s+e\s+/gi, " e "); // mantiene " e " sin coma
 }
 
