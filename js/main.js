@@ -14,10 +14,20 @@ document.addEventListener("DOMContentLoaded", () => {
   // Reemplazar guiones bajos por espacios
 if (name) {
   name = name
-    .replace(/_/g, " ")           // Underscore → espacio
-    .replace(/\s+y\s+/gi, ", y ") // " y " → " y "
-    .replace(/\s+e\s+/gi, " e "); // mantiene " e " sin coma
+    .replace(/_/g, " ")
+    .replace(/\s+y\s+/gi, " y ")
+    .replace(/\s+e\s+/gi, " e ");
+
+  // Añade coma si hay más de dos palabras antes del "y"
+  if (name.includes(" y ")) {
+    const parts = name.split(" y ");
+    if (parts[0].split(" ").length > 1) {
+      parts[0] = parts[0].replace(/(\w+)\s+(\w+)$/, "$1, $2");
+    }
+    name = parts.join(" y ");
+  }
 }
+
 
   const title = document.getElementById("title");
   const messageEl = document.getElementById("message");
