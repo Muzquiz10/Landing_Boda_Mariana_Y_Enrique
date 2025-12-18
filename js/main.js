@@ -35,6 +35,24 @@ if (name) {
   }
 }
 
+/* ===============================
+  2. PERSONALIZACIÓN MENSAJE WHATSAPP
+=============================== */
+
+const whatsappBtn = document.getElementById("whatsappBtn");
+
+if (whatsappBtn) {
+  const phone = "34612345678"; // tu número
+
+  const cleanName = name ? name : "Hola";
+  const text = `Hola Mariana y Enrique, somos ${cleanName} y tenemos una duda sobre la boda 💍`;
+
+  whatsappBtn.href = `https://wa.me/${phone}?text=${encodeURIComponent(text)}`;
+}
+
+/* ===============================
+  3. PERSONALIZACIÓN MENSAJE INVITACIÓN
+=============================== */
 
 
   const title = document.getElementById("title");
@@ -74,7 +92,7 @@ if (name) {
 
 
   /* ===============================
-     2. ANIMACIÓN GLOBAL DE ENTRADA
+     4. ANIMACIÓN GLOBAL DE ENTRADA
   =============================== */
 
   const reveals = document.querySelectorAll(".reveal");
