@@ -42,7 +42,7 @@ if (name) {
 const whatsappBtn = document.getElementById("whatsappBtn");
 
 if (whatsappBtn) {
-  const phone = "34612345678"; // tu número
+  const phone = "34655148870"; // teléfono de destino
 
   const cleanName = name ? name : "Hola";
   const text = `Hola Mariana y Enrique, somos ${cleanName} y tenemos una duda sobre la boda 💍`;
