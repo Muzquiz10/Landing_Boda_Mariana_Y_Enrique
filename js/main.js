@@ -43,10 +43,14 @@ const whatsappBtn = document.getElementById("whatsappBtn");
 
 if (whatsappBtn) {
   const phone = "34655148870"; // teléfono de destino
-
   const cleanName = name ? name : "Hola";
-  const text = `Hola Mariana y Enrique, somos ${cleanName} y tenemos una duda sobre la boda 💍`;
 
+  let text; // Declaramos la variable text fuera del if/else
+  if (name.includes("_e_") || name.includes("_y_")) {
+  const text = `Hola Mariana y Enrique, somos ${cleanName} y tenemos una duda sobre la boda 💍`;
+  } else {
+  const text = `Hola Mariana y Enrique, soy ${cleanName} y tengo una duda sobre la boda 💍`;
+  }
   whatsappBtn.href = `https://wa.me/${phone}?text=${encodeURIComponent(text)}`;
 }
 
