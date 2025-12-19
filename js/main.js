@@ -9,94 +9,111 @@ document.addEventListener("DOMContentLoaded", () => {
   let name = params.get("name");
   const type = params.get("type");
 
-  // Reemplazar guiones bajos por espacios
-if (name) {
-  // Paso 1: dividir por "_e_" o "_y_"
-  let separator = null;
+  // Detectar si es grupo ANTES de modificar el nombre
+  const isGroup =
+    name &&
+    (name.includes("_y_") || name.includes("_e_"));
 
-  if (name.includes("_e_")) separator = "_e_";
-  if (name.includes("_y_")) separator = "_y_";
+  // Formatear nombre
+  if (name) {
+    let separator = null;
 
-  if (separator) {
-    const parts = name.split(separator);
+    if (name.includes("_e_")) separator = "_e_";
+    if (name.includes("_y_")) separator = "_y_";
 
-    // Parte izquierda: personas separadas por "_"
-    const people = parts[0].split("_").join(", ");
+    if (separator) {
+      const parts = name.split(separator);
 
-    // Parte derecha: colectivo o última persona
-    const last = parts[1].replace(/_/g, " ");
+      // Personas a la izquierda separadas por "_"
+      const people = parts[0].split("_").join(", ");
 
-    name = separator === "_e_"
-      ? `${people} e ${last}`
-      : `${people} y ${last}`;
-  } else {
-    // Caso simple (una sola persona)
-    name = name.replace(/_/g, " ");
+      // Parte derecha (persona o colectivo)
+      const last = parts[1].replace(/_/g, " ");
+
+      name = separator === "_e_"
+        ? `${people} e ${last}`
+        : `${people} y ${last}`;
+    } else {
+      // Caso simple (una persona)
+      name = name.replace(/_/g, " ");
+    }
   }
-}
 
-/* ===============================
-  2. PERSONALIZACIÓN MENSAJE WHATSAPP
-=============================== */
+  /* ===============================
+     2. PERSONALIZACIÓN MENSAJE WHATSAPP
+  =============================== */
 
-// const whatsappBtn = document.getElementById("whatsappBtn");
+  const whatsappBtn = document.getElementById("whatsappBtn");
 
-// if (whatsappBtn) {
-//   const phone = "34655148870"; // teléfono de destino
-//   const cleanName = name ? name : "Hola";
+  if (whatsappBtn) {
+    const phone = "34655148870"; // Número al que se enviarán los mensajes
+    const cleanName = name ? name : "Hola";
 
-// const multiplePeople = name && (name.includes(" e ") || name.includes(" y "));
-// let text;
+    let text;
 
-// if (multiplePeople) {
-//   text = `Hola Mariana y Enrique, somos ${cleanName} y tenemos una duda sobre la boda 💍`;
-// } else {
-//   text = `Hola Mariana y Enrique, soy ${cleanName} y tengo una duda sobre la boda 💍`;
-// }
-//   whatsappBtn.href = `https://wa.me/${phone}?text=${encodeURIComponent(text)}`;
-// }
-// });
+    if (isGroup) {
+      text = `Hola Mariana y Enrique, somos ${cleanName} y tenemos una duda sobre la boda 💍`;
+    } else {
+      text = `Hola Mariana y Enrique, soy ${cleanName} y tengo una duda sobre la boda 💍`;
+    }
 
-/* ===============================
-  3. PERSONALIZACIÓN MENSAJE INVITACIÓN
-=============================== */
+    whatsappBtn.href = `https://wa.me/${phone}?text=${encodeURIComponent(text)}`;
+  }
 
+  /* ===============================
+     3. PERSONALIZACIÓN MENSAJE INVITACIÓN
+  =============================== */
 
   const title = document.getElementById("title");
   const messageEl = document.getElementById("message");
 
-  if (name) {
-    title.innerText = `${name}`;
+  if (name && title) {
+    title.innerText = name;
   }
 
   let message = "Queremos compartir contigo un día muy especial para nosotros.";
 
   if (type === "familia") {
-    message = "Querido miembro de la familia,\n\nNos llena de felicidad invitarte a nuestra boda y ser parte de este momento tan significativo en nuestras vidas.\nA continuación te dejamos los detalles.";
+    message =
+      "Querido miembro de la familia,\n\n" +
+      "Nos llena de felicidad invitarte a nuestra boda y ser parte de este momento tan significativo en nuestras vidas.\n" +
+      "A continuación te dejamos los detalles.";
   }
 
   if (type === "amigos") {
-    message = "Querido amigo/a,\n\nMuchas gracias por todas las vivencias que hemos compartido juntos y esperamos poder contar con tu presencia en el día de nuestra boda.\nA continuación te dejamos los detalles.";
+    message =
+      "Querido amigo/a,\n\n" +
+      "Muchas gracias por todas las vivencias que hemos compartido juntos y esperamos poder contar con tu presencia en el día de nuestra boda.\n" +
+      "A continuación te dejamos los detalles.";
   }
 
   if (type === "padrino_Jhan") {
-    message = "Querido padrino y acompañantes,\n\nComo persona especial, nos complace informarte a ti, a Cinthia, Arely y Anita de los detalles de nuestra boda.";
+    message =
+      "Querido padrino y acompañantes,\n\n" +
+      "Como persona especial, nos complace informarte a ti, a Cinthia, Arely y Anita de los detalles de nuestra boda.";
   }
 
   if (type === "padrino_Luis") {
-    message = "Querido padrino y acompañante,\n\nComo persona especial, nos complace informarte a ti y a Maricarmen de los detalles de nuestra boda.";
+    message =
+      "Querido padrino y acompañante,\n\n" +
+      "Como persona especial, nos complace informarte a ti y a Maricarmen de los detalles de nuestra boda.";
   }
 
   if (type === "mama") {
-    message = "Querida mamá,\n\nComo persona especial, nos complace informarte los detalles de nuestra boda.";
+    message =
+      "Querida mamá,\n\n" +
+      "Como persona especial, nos complace informarte de los detalles de nuestra boda.";
   }
 
   if (type === "hermano") {
-    message = "Querido Luis y Esme,\n\nComo persona especial, nos complace informarte de los detalles de nuestra boda.";
+    message =
+      "Querido Luis y Esme,\n\n" +
+      "Como persona especial, nos complace informarte de los detalles de nuestra boda.";
   }
 
-  messageEl.innerText = message;
-
+  if (messageEl) {
+    messageEl.innerText = message;
+  }
 
   /* ===============================
      4. ANIMACIÓN GLOBAL DE ENTRADA
@@ -107,8 +124,7 @@ if (name) {
   reveals.forEach((el, index) => {
     setTimeout(() => {
       el.classList.add("active");
-    }, index * 900); // efecto en cascada
+    }, index * 900);
   });
 
 });
-
