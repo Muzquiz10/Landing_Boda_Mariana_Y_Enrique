@@ -51,14 +51,24 @@ body {
 
 .hero h2 {
   font-family: 'Dancing Script', cursive !important;
-  font-size: 3rem;
+  font-size: 0.5rem;
   line-height: 1.2;
   margin-bottom: 10px;
+  
 }
 
 .subtitle {
+  /* background: rgba(119, 113, 113, 0.2);
+  backdrop-filter: blur(4px);
+  -webkit-backdrop-filter: blur(4px);
+  border-radius: 20px;
+  padding: 40px 30px;
+  box-shadow: 0 20px 40px rgba(0,0,0,0.06); */
   color: #efa2a8;
   margin-bottom: 40px;
+  font-size: 2rem;
+  line-height: 2rem;
+  font-weight: 900;
 }
 
 /* =========================
