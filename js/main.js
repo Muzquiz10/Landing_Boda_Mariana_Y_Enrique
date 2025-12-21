@@ -115,6 +115,15 @@ document.addEventListener("DOMContentLoaded", () => {
     messageEl.innerText = message;
   }
 
+// Para ver en Google Analytics  información por enlace de invitado
+
+if (typeof gtag === "function") {
+  gtag('event', 'landing_view', {
+    guest_name: name || 'desconocido',
+    guest_type: type || 'sin_tipo'
+  });
+}
+
   /* ===============================
      4. ANIMACIÓN GLOBAL DE ENTRADA
   =============================== */
