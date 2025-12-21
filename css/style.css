@@ -17,9 +17,16 @@ body {
 /* FONDO MÓVIL */
 @media (max-width: 768px) {
   body {
-    background-image: url('../assets/IMG/fondo_movil_format.png');
+    background-image:
+      linear-gradient(
+        rgba(255, 255, 255, 0.35),
+        rgba(255, 255, 255, 0.35)
+      ),
+      url('../assets/IMG/fondo_movil_format.png');
+
     background-position: 50% center;
     background-size: cover;
+    background-repeat: no-repeat;
   }
 }
 
