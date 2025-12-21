@@ -17,7 +17,7 @@ body {
 /* FONDO MÓVIL */
 @media (max-width: 768px) {
   body {
-    background-image: url('../assets/IMG/fondo_movil_format_2.png');
+    background-image: url('../assets/IMG/fondo_movil_format.png');
     background-position: 50% center;
     background-size: cover;
   }
