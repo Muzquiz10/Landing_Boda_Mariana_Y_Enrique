@@ -28,14 +28,18 @@ window.upload = async () => {
 
   status.innerText = "Subiendo fotos... ⏳";
 
-  for (const file of files) {
-    const fileRef = ref(
-      storage,
-      `boda/${Date.now()}_${file.name}`
-    );
-    await uploadBytes(fileRef, file);
+  try {
+    for (const file of files) {
+      const fileRef = ref(
+        storage,
+        `boda/${Date.now()}_${file.name}`
+      );
+      await uploadBytes(fileRef, file);
+    }
+    status.innerText = "¡Fotos subidas! 🎉 Gracias ❤️";
+  } catch (error) {
+    console.error(error);
+    status.innerText = "❌ Error al subir: " + error.message;
   }
-
-  status.innerText = "¡Fotos subidas! 🎉 Gracias ❤️";
 };
 
