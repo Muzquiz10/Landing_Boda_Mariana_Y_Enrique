@@ -1,1 +1,7 @@
 npx firebase deploy
+
+Siguientes mejoras:
+- En movil sigue saliendo mal, sigue sin salir 3 fotos por fila
+- El botón de voler subir fotos lo quiero arriba
+- Cuando le de a una foto ver en grande y poder seguir viendo el resto
+- Posibilidad de seleccionar para descargar

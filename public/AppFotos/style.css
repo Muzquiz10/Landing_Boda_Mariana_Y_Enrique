@@ -117,9 +117,9 @@ input[type="file"] {
 /* GALERÍA TIPO INSTAGRAM */
 .gallery {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
-  gap: 12px;
-  margin-top: 20px;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 8px;
+  margin-top: 8px;
 }
 
 .photo-card {
@@ -129,10 +129,10 @@ input[type="file"] {
 }
 
 .photo-card img {
-  width: 50%;
-  height: 70px;
+  width: 100%;
+  aspect-ratio: 1 / 1;
   object-fit: cover;
-  border-radius: 12px;
+  border-radius: 10px;
   box-shadow: 0 4px 10px rgba(0,0,0,0.08);
 }
 
@@ -142,5 +142,8 @@ input[type="file"] {
   text-align: center;
 }
 
-
-
+/* CONTENEDOR DEL BOTÓN SUPERIOR */
+.top-button .btn {
+  width: auto;
+  padding: 0.7rem 1.2rem;
+}
