@@ -1,0 +1,15 @@
+.h1 {
+  font-family: 'Dancing Script', cursive !important;
+  font-size: 4rem;
+  line-height: 1.2;
+  color: #e4ba3a;
+  margin-bottom: 10px;
+}
+
+.hero h1 {
+  font-family: 'Dancing Script', cursive !important;
+  font-size: 4rem;
+  line-height: 1.2;
+  color: #e4ba3a;
+  margin-bottom: 10px;
+}
