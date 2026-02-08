@@ -11,10 +11,10 @@ body {
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
-
+/* 
   display: flex;
   justify-content: center;
-  align-items: center;
+  align-items: center; */
 }
 
 /* CONTENEDOR PRINCIPAL */
@@ -26,6 +26,7 @@ body {
   max-width: 420px;
   text-align: center;
   box-shadow: 0 20px 40px rgba(0,0,0,0.85);
+  margin: 80px auto 40px;
 }
 
 /* TÍTULOS */
@@ -72,6 +73,11 @@ input[type="file"] {
   font-size: 1rem;
   cursor: pointer;
   margin-top: 0.5rem;
+}
+
+.btn:hover {
+  background: #f5f6ff;
+  color: rgb(45, 43, 43);
 }
 
 .btn:active {
@@ -163,5 +169,29 @@ input[type="file"] {
 /* CONTENEDOR DEL BOTÓN SUPERIOR */
 .top-button .btn {
   width: auto;
-  padding: 0.7rem 1.2rem;
+  padding: 0.6rem 1.1rem;
+  font-size: 0.9rem;
+  background: rgba(108, 99, 255, 0.85); /* semitransparente */
+  backdrop-filter: blur(6px);
+  -webkit-backdrop-filter: blur(6px);
+}
+
+.top-button {
+  position: fixed;
+  top: 16px;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 1000;
+  box-shadow: 0 6px 20px rgba(0,0,0,0.85);
+}
+
+.top-button .btn:hover {
+  background: rgba(245, 246, 255, 0.85);
+  color: rgb(45, 43, 43);
+}
+
+.top-button.hidden {
+  opacity: 0;
+  pointer-events: none;
+  transform: translateX(-50%) translateY(-10px);
 }
