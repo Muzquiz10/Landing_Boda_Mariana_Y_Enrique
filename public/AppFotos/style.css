@@ -7,7 +7,8 @@
 body {
   margin: 0;
   min-height: 100vh;
-  background: linear-gradient(135deg, #f7f3ff, #eef1ff);
+  background-image: url("/assets/IMG/fondo_movil_format.png");
+  /* background: linear-gradient(135deg, #f7f3ff, #eef1ff); */
   display: flex;
   justify-content: center;
   align-items: center;
@@ -15,7 +16,7 @@ body {
 
 /* CONTENEDOR PRINCIPAL */
 .container {
-  background: white;
+  background: rgb(243, 239, 222);
   padding: 2rem 1.5rem;
   border-radius: 20px;
   width: 90%;
@@ -72,6 +73,20 @@ input[type="file"] {
 
 .btn:active {
   transform: scale(0.98);
+}
+
+.button-row {
+  display: flex;
+  gap: 10px;
+  margin-top: 0.5rem;
+}
+
+.button-row .btn {
+  width: 50%;
+  text-decoration: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 /* ESTADO */
