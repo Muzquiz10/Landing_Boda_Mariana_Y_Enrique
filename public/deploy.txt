@@ -1,8 +1,19 @@
 npx firebase deploy
 
 Siguientes mejoras:
-- Quitar el timestamp.
-- Cuando le de a una foto ver en grande y poder seguir viendo el resto
+- Quitar el timestamp. 14/02 QUITADO
+- Cuando le de a una foto ver en grande y poder seguir viendo el resto. 14/02 OK
+- Animación tipo slide al pasar de foto
 - Posibilidad de seleccionar para descargar
 - Posibilidad de compartir las fotos
 - Posibilidad comentar cada foto
+
+Datos Firebase:
+const firebaseConfig = {
+  apiKey: "AIzaSyD3AXdqNjqbkOh2TGehZ2ZQrZ8ldsPOsCA",
+  authDomain: "boda-mariana-y-enrique.firebaseapp.com",
+  projectId: "boda-mariana-y-enrique",
+  storageBucket: "boda-mariana-y-enrique.firebasestorage.app",
+  messagingSenderId: "1027797408433",
+  appId: "1:1027797408433:web:cf736bf0f847c32864e090"
+};

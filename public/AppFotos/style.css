@@ -195,3 +195,73 @@ input[type="file"] {
   pointer-events: none;
   transform: translateX(-50%) translateY(-10px);
 }
+
+/* FULLSCREEN OVERLAY */
+.fullscreen {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.90);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.3s ease;
+  z-index: 2000;
+}
+
+.fullscreen.active {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+.fullscreen img {
+  max-width: 90%;
+  max-height: 90%;
+  border-radius: 12px;
+}
+
+.fullscreen .close {
+  position: absolute;
+  top: 20px;
+  right: 25px;
+  font-size: 28px;
+  color: white;
+  cursor: pointer;
+}
+
+.fullscreen .nav {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  font-size: 40px;
+  color: white;
+  cursor: pointer;
+  user-select: none;
+  padding: 20px;
+}
+
+.fullscreen .left { left: 10px; }
+.fullscreen .right { right: 10px; }
+
+.photo-card img {
+  cursor: pointer;
+  transition: transform 0.2s ease;
+}
+
+.photo-card img:hover {
+  transform: scale(1.05);
+}
+
+.fullscreen img {
+  max-width: 92%;
+  max-height: 92%;
+  border-radius: 14px;
+  transform: scale(0.95);
+  transition: transform 0.3s ease;
+}
+
+.fullscreen.active img {
+  transform: scale(1);
+}
+
