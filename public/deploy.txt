@@ -18,4 +18,4 @@ const firebaseConfig = {
   appId: "1:1027797408433:web:cf736bf0f847c32864e090"
 };
 
-Enlace app: boda-mariana-y-enrique.firebaseapp.com
+Enlace app: https://boda-mariana-y-enrique.web.app/AppFotos/AppFotos.html
