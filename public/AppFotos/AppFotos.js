@@ -37,7 +37,7 @@ const THUMB_MAX_SIZE = 420;
 const IMAGE_QUALITY = 0.82;
 const THUMB_QUALITY = 0.74;
 const CACHE_CONTROL = "public,max-age=31536000,immutable";
-const MAX_VIDEO_SIZE_MB = 300;
+const MAX_VIDEO_SIZE_MB = 5200;
 
 let previewUrls = [];
 let isUploading = false;
