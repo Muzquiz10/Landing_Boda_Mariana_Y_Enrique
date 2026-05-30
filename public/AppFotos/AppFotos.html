@@ -3,9 +3,10 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Comparte tus fotos 📸</title>
-  <link href="https://fonts.googleapis.com/css2?family=Lora:wght@400;500;600&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="style.css">
+  <title>Comparte tus fotos y videos 📸</title>
+  <link rel="preconnect" href="https://www.gstatic.com" crossorigin>
+  <link rel="preconnect" href="https://firebasestorage.googleapis.com" crossorigin>
+  <link rel="stylesheet" href="style.css?v=20260530-3">
   <!-- Favicon -->
   <link rel="icon" href="/favicon.ico">
 
@@ -14,7 +15,7 @@
 
 <body>
   <main class="container">
-    <h1>📸 Comparte tus fotos</h1>
+    <h1>📸 Comparte tus fotos y videos</h1>
 
     <p class="subtitle">
       Gracias por acompañarnos en este día tan especial ❤️
@@ -25,12 +26,12 @@
       type="file"
       id="file"
       multiple
-      accept="image/*"
+      accept="image/*,video/*"
     />
 
     <!-- BOTÓN BONITO -->
     <label class="upload-box" for="file">
-      Selecciona tus fotos
+      Selecciona fotos o videos
     </label>
 
     <!-- PREVIEW -->
@@ -39,7 +40,7 @@
     <!-- SUBIR -->
     <div class="button-row">
       <button class="btn" type="button" onclick="upload()">
-        Subir fotos
+        Subir archivos
       </button>
 
       <a href="galeria.html" class="btn">
@@ -55,6 +56,6 @@
     <p id="status" class="status"></p>
   </main>
 
-  <script type="module" src="AppFotos.js"></script>
+  <script type="module" src="AppFotos.js?v=20260530-3"></script>
 </body>
 </html>
