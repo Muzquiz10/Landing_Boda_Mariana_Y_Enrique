@@ -17,3 +17,5 @@ const firebaseConfig = {
   messagingSenderId: "1027797408433",
   appId: "1:1027797408433:web:cf736bf0f847c32864e090"
 };
+
+Enlace app: boda-mariana-y-enrique.firebaseapp.com
