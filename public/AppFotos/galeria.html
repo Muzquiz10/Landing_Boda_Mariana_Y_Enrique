@@ -6,42 +6,100 @@
   <title>Galería de la boda 📸</title>
   <link rel="preconnect" href="https://www.gstatic.com" crossorigin>
   <link rel="preconnect" href="https://firebasestorage.googleapis.com" crossorigin>
-  <link rel="stylesheet" href="style.css?v=20260530-3">
-  <!-- Favicon -->
+  <link rel="stylesheet" href="style.css?v=20260620-1">
   <link rel="icon" href="../AppFotos/assets/favicon.ico">
 </head>
 
 <body>
-
-  <!-- BOTÓN FUERA DEL CONTENEDOR -->
-<div class="top-button">
-  <a href="AppFotos.html" class="btn">Volver a inicio</a>
-</div>
-
+  <div class="top-button">
+    <a href="AppFotos.html" class="btn">Volver a inicio</a>
+  </div>
 
   <main class="container">
-    <h1> Galería </h1>
-    <h4>Mariana & Enrique </h4>
-    
+    <h1>Galería</h1>
+    <h4>Mariana & Enrique</h4>
+
+    <div class="gallery-toolbar">
+      <button
+        id="selection-toggle"
+        class="gallery-action"
+        type="button"
+        aria-pressed="false"
+      >
+        <svg aria-hidden="true" viewBox="0 0 24 24">
+          <path d="M9 11l3 3L22 4"></path>
+          <path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"></path>
+        </svg>
+        <span id="selection-toggle-label">Seleccionar fotos</span>
+      </button>
+
+      <div id="selection-actions" class="selection-actions" hidden>
+        <span id="selection-count">0 seleccionadas</span>
+        <button id="download-selected" class="gallery-action primary" type="button" disabled>
+          <svg aria-hidden="true" viewBox="0 0 24 24">
+            <path d="M12 3v12"></path>
+            <path d="m7 10 5 5 5-5"></path>
+            <path d="M5 21h14"></path>
+          </svg>
+          <span>Descargar</span>
+        </button>
+      </div>
+    </div>
+
     <div id="gallery" class="gallery"></div>
     <button id="load-more" class="btn load-more" type="button" hidden>
-      Cargar mas
+      Cargar más
     </button>
-    <p id="status" class="status"></p>
+    <p id="status" class="status" aria-live="polite"></p>
   </main>
 
-  <script type="module" src="galeria.js?v=20260530-3"></script>
+  <script type="module" src="galeria.js?v=20260620-1"></script>
 
+  <div
+    id="fullscreen"
+    class="fullscreen"
+    role="dialog"
+    aria-modal="true"
+    aria-label="Visor de la galería"
+  >
+    <div class="viewer-topbar">
+      <span id="viewer-counter" class="viewer-counter"></span>
+      <div class="viewer-actions">
+        <button id="viewer-download" class="viewer-action" type="button">
+          <svg aria-hidden="true" viewBox="0 0 24 24">
+            <path d="M12 3v12"></path>
+            <path d="m7 10 5 5 5-5"></path>
+            <path d="M5 21h14"></path>
+          </svg>
+          <span>Descargar</span>
+        </button>
+        <button id="close-btn" class="viewer-action icon-only" type="button" aria-label="Cerrar">
+          <svg aria-hidden="true" viewBox="0 0 24 24">
+            <path d="m6 6 12 12"></path>
+            <path d="M18 6 6 18"></path>
+          </svg>
+        </button>
+      </div>
+    </div>
 
-<!-- FULLSCREEN VIEWER -->
-<div id="fullscreen" class="fullscreen">
-  <span id="close-btn" class="close">✕</span>
-  <span id="prev-btn" class="nav left">❮</span>
-  <img id="fullscreen-img" alt="Foto de la boda" hidden />
-  <video id="fullscreen-video" controls playsinline hidden></video>
-  <span id="next-btn" class="nav right">❯</span>
-</div>
+    <button id="prev-btn" class="nav left" type="button" aria-label="Anterior">‹</button>
 
+    <div id="media-stage" class="media-stage">
+      <div id="zoom-surface" class="zoom-surface" hidden>
+        <img id="fullscreen-img" alt="Foto de la boda" />
+      </div>
+      <video id="fullscreen-video" controls playsinline hidden></video>
+    </div>
+
+    <button id="next-btn" class="nav right" type="button" aria-label="Siguiente">›</button>
+
+    <div id="zoom-controls" class="zoom-controls" hidden>
+      <button id="zoom-out" type="button" aria-label="Alejar">−</button>
+      <button id="zoom-reset" type="button" aria-label="Restablecer zoom">
+        <span id="zoom-level">100%</span>
+      </button>
+      <button id="zoom-in" type="button" aria-label="Acercar">+</button>
+    </div>
+  </div>
 </body>
-
 </html>

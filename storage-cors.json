@@ -1,0 +1,20 @@
+[
+  {
+    "origin": [
+      "https://boda-mariana-y-enrique.web.app",
+      "https://boda-mariana-y-enrique.firebaseapp.com",
+      "http://localhost:4173",
+      "http://127.0.0.1:4173"
+    ],
+    "method": [
+      "GET",
+      "HEAD"
+    ],
+    "responseHeader": [
+      "Content-Type",
+      "Content-Length",
+      "Content-Disposition"
+    ],
+    "maxAgeSeconds": 3600
+  }
+]
