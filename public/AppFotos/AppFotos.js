@@ -30,8 +30,18 @@ const preview = document.getElementById("preview");
 const status = document.getElementById("status");
 const progressWrapper = document.querySelector(".progress-wrapper");
 const progressBar = document.getElementById("progress-bar");
+const destinationInputs = Array.from(document.querySelectorAll('input[name="upload-destination"]'));
 
-const STORAGE_PREFIX = "boda";
+const UPLOAD_DESTINATIONS = {
+  guest: {
+    prefix: "boda",
+    label: "galer\u00eda normal"
+  },
+  official: {
+    prefix: "boda/Fotos_Oficiales",
+    label: "Fotos Fot\u00f3grafa"
+  }
+};
 const IMAGE_MAX_SIZE = 2048;
 const THUMB_MAX_SIZE = 420;
 const IMAGE_QUALITY = 0.82;
@@ -66,6 +76,7 @@ window.upload = async () => {
   }
 
   const signedIn = await ensureAnonymousSession();
+  const destination = getSelectedDestination();
 
   if (!signedIn) {
     setStatus("No se pudo conectar con Firebase. Revisa la conexion e intentalo otra vez.");
@@ -74,6 +85,9 @@ window.upload = async () => {
 
   isUploading = true;
   input.disabled = true;
+  destinationInputs.forEach((element) => {
+    element.disabled = true;
+  });
   progressWrapper.style.display = "block";
   setProgress(0);
 
@@ -81,9 +95,9 @@ window.upload = async () => {
     let completedFiles = 0;
 
     for (const file of files) {
-      setStatus(`Preparando ${completedFiles + 1} de ${files.length}: ${file.name}`);
+      setStatus(`Preparando ${completedFiles + 1} de ${files.length} para ${destination.label}: ${file.name}`);
 
-      const jobs = await createUploadJobs(file);
+      const jobs = await createUploadJobs(file, destination.prefix);
 
       for (let jobIndex = 0; jobIndex < jobs.length; jobIndex += 1) {
         const job = jobs[jobIndex];
@@ -99,7 +113,7 @@ window.upload = async () => {
       setProgress((completedFiles / files.length) * 100);
     }
 
-    setStatus("Archivos subidos. Gracias por compartirlos.");
+    setStatus(`Archivos subidos a ${destination.label}. Gracias por compartirlos.`);
     setProgress(100);
     input.value = "";
     renderPreview([]);
@@ -109,8 +123,16 @@ window.upload = async () => {
   } finally {
     isUploading = false;
     input.disabled = false;
+    destinationInputs.forEach((element) => {
+      element.disabled = false;
+    });
   }
 };
+
+function getSelectedDestination() {
+  const selected = destinationInputs.find((element) => element.checked);
+  return UPLOAD_DESTINATIONS[selected?.value] || UPLOAD_DESTINATIONS.guest;
+}
 
 function renderPreview(files) {
   previewUrls.forEach((url) => URL.revokeObjectURL(url));
@@ -155,7 +177,7 @@ function renderPreview(files) {
   }
 }
 
-async function createUploadJobs(file) {
+async function createUploadJobs(file, storagePrefix) {
   const id = createUploadId(file.name);
 
   if (isImage(file)) {
@@ -171,7 +193,7 @@ async function createUploadJobs(file) {
     const fullExtension = getImageExtension(fullType, file.name);
     const jobs = [
       {
-        path: `${STORAGE_PREFIX}/${id}_full.${fullExtension}`,
+        path: `${storagePrefix}/${id}_full.${fullExtension}`,
         blob: fullBlob,
         metadata: buildMetadata(fullType, file.name, "image")
       }
@@ -179,7 +201,7 @@ async function createUploadJobs(file) {
 
     if (thumb) {
       jobs.push({
-        path: `${STORAGE_PREFIX}/${id}_thumb.jpg`,
+        path: `${storagePrefix}/${id}_thumb.jpg`,
         blob: thumb,
         metadata: buildMetadata("image/jpeg", file.name, "image-thumb")
       });
@@ -191,7 +213,7 @@ async function createUploadJobs(file) {
   if (isVideo(file)) {
     const jobs = [
       {
-        path: `${STORAGE_PREFIX}/${id}_video.${getExtension(file.name, "mp4")}`,
+        path: `${storagePrefix}/${id}_video.${getExtension(file.name, "mp4")}`,
         blob: file,
         metadata: buildMetadata(file.type || "video/mp4", file.name, "video")
       }
@@ -201,7 +223,7 @@ async function createUploadJobs(file) {
 
     if (thumb) {
       jobs.push({
-        path: `${STORAGE_PREFIX}/${id}_video_thumb.jpg`,
+        path: `${storagePrefix}/${id}_video_thumb.jpg`,
         blob: thumb,
         metadata: buildMetadata("image/jpeg", file.name, "video-thumb")
       });

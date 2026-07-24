@@ -95,6 +95,72 @@ input[type="file"] {
   left: -9999px;
 }
 
+/* SELECTOR TEMPORAL DE DESTINO */
+.upload-destination {
+  margin: 0 0 1rem;
+  padding: 0;
+  border: 0;
+  text-align: left;
+}
+
+.upload-destination legend {
+  margin-bottom: 0.45rem;
+  color: #455d88;
+  font-size: 0.86rem;
+  font-weight: 700;
+}
+
+.destination-options {
+  display: flex;
+  gap: 4px;
+  padding: 4px;
+  border: 1px solid rgba(88, 112, 155, 0.35);
+  border-radius: 14px;
+  background: rgba(255, 255, 255, 0.55);
+}
+
+.destination-option {
+  flex: 1 1 0;
+  min-width: 0;
+}
+
+.destination-option input {
+  position: absolute;
+  opacity: 0;
+  pointer-events: none;
+}
+
+.destination-option span {
+  display: grid;
+  min-height: 40px;
+  place-items: center;
+  padding: 0.55rem 0.45rem;
+  border-radius: 10px;
+  color: #455d88;
+  cursor: pointer;
+  font-size: 0.82rem;
+  font-weight: 700;
+  line-height: 1.15;
+  text-align: center;
+  overflow-wrap: anywhere;
+  transition: background 0.18s ease, color 0.18s ease, transform 0.18s ease;
+}
+
+.destination-option input:checked + span {
+  background: #58709b;
+  color: white;
+}
+
+.destination-option input:focus-visible + span {
+  outline: 3px solid #f697ac;
+  outline-offset: 2px;
+}
+
+.destination-option input:disabled + span {
+  cursor: wait;
+  opacity: 0.56;
+}
+
 /* BOTONES GENERALES */
 .btn {
   width: 100%;
@@ -201,6 +267,53 @@ input[type="file"] {
 }
 
 /* CONTROLES DE GALERÍA */
+.gallery-tabs {
+  display: flex;
+  gap: 4px;
+  margin: 0 0 14px;
+  padding: 4px;
+  border: 1px solid rgba(88, 112, 155, 0.35);
+  border-radius: 14px;
+  background: rgba(255, 255, 255, 0.55);
+}
+
+.gallery-tab {
+  flex: 1 1 0;
+  min-width: 0;
+  min-height: 42px;
+  padding: 0.58rem 0.45rem;
+  border: 0;
+  border-radius: 10px;
+  background: transparent;
+  color: #455d88;
+  cursor: pointer;
+  font-size: 0.82rem;
+  font-weight: 700;
+  line-height: 1.15;
+  overflow-wrap: anywhere;
+  text-align: center;
+  transition: background 0.18s ease, color 0.18s ease, transform 0.18s ease;
+}
+
+.gallery-tab.active {
+  background: #58709b;
+  color: white;
+}
+
+.gallery-tab:hover {
+  background: #f697ac;
+  color: #2d2b2b;
+}
+
+.gallery-tab:active {
+  transform: scale(0.97);
+}
+
+.gallery-tab:focus-visible {
+  outline: 3px solid #f697ac;
+  outline-offset: 2px;
+}
+
 .gallery-toolbar {
   display: flex;
   flex-direction: column;

@@ -21,6 +21,7 @@ const storage = getStorage(app);
 const gallery = document.getElementById("gallery");
 const status = document.getElementById("status");
 const loadMoreBtn = document.getElementById("load-more");
+const galleryTabs = Array.from(document.querySelectorAll("[data-gallery-key]"));
 const selectionToggle = document.getElementById("selection-toggle");
 const selectionToggleLabel = document.getElementById("selection-toggle-label");
 const selectionActions = document.getElementById("selection-actions");
@@ -37,7 +38,18 @@ const viewerCounter = document.getElementById("viewer-counter");
 const viewerDownloadBtn = document.getElementById("viewer-download");
 const closeBtn = document.getElementById("close-btn");
 
-const STORAGE_PREFIX = "boda";
+const GALLERIES = {
+  guest: {
+    prefix: "boda",
+    label: "galer\u00eda boda",
+    emptyStatus: "A\u00fan no hay fotos ni v\u00eddeos."
+  },
+  official: {
+    prefix: "boda/Fotos_Oficiales",
+    label: "Fotos Fot\u00f3grafa",
+    emptyStatus: "A\u00fan no hay fotos de la fot\u00f3grafa."
+  }
+};
 const LIST_PAGE_SIZE = 100;
 const RENDER_PAGE_SIZE = 24;
 const MIN_ZOOM = 1;
@@ -63,6 +75,8 @@ let panStartY = 0;
 let gestureStartDistance = 0;
 let gestureStartScale = MIN_ZOOM;
 let gestureHadMultiplePointers = false;
+let activeGalleryKey = getInitialGalleryKey();
+let galleryLoadId = 0;
 
 const selectedIndices = new Set();
 const preloadedUrls = new Set();
@@ -79,6 +93,9 @@ function initGalleryPage() {
   selectionToggle.addEventListener("click", () => setSelectionMode(!selectionMode));
   downloadSelectedBtn.addEventListener("click", downloadSelectedPhotos);
   viewerDownloadBtn.addEventListener("click", () => downloadItem(mediaItems[currentIndex], viewerDownloadBtn));
+  galleryTabs.forEach((tab) => {
+    tab.addEventListener("click", () => setActiveGallery(tab.dataset.galleryKey));
+  });
 
   mediaStage.addEventListener("pointerdown", startPointerGesture);
   mediaStage.addEventListener("pointermove", movePointerGesture);
@@ -87,6 +104,7 @@ function initGalleryPage() {
   mediaStage.addEventListener("wheel", handleZoomWheel, { passive: false });
   zoomSurface.addEventListener("dblclick", toggleDoubleClickZoom);
 
+  updateGalleryTabs();
   loadGallery();
 }
 
@@ -113,18 +131,68 @@ fullscreen.addEventListener("click", (event) => {
   }
 });
 
+function getInitialGalleryKey() {
+  return window.location.hash === "#fotos-fotografa" ? "official" : "guest";
+}
+
+function getActiveGallery() {
+  return GALLERIES[activeGalleryKey] || GALLERIES.guest;
+}
+
+function setActiveGallery(key) {
+  if (!GALLERIES[key] || key === activeGalleryKey) return;
+
+  activeGalleryKey = key;
+
+  if (fullscreen.classList.contains("active")) {
+    closeFullscreen();
+  }
+
+  updateGalleryTabs();
+  updateGalleryHash();
+  loadGallery();
+}
+
+function updateGalleryTabs() {
+  galleryTabs.forEach((tab) => {
+    const active = tab.dataset.galleryKey === activeGalleryKey;
+    tab.classList.toggle("active", active);
+    tab.setAttribute("aria-pressed", String(active));
+  });
+}
+
+function updateGalleryHash() {
+  const nextHash = activeGalleryKey === "official" ? "#fotos-fotografa" : "";
+  const nextUrl = `${window.location.pathname}${window.location.search}${nextHash}`;
+  window.history.replaceState(null, "", nextUrl);
+}
+
 async function loadGallery() {
-  status.innerText = "Cargando galería...";
+  const loadId = ++galleryLoadId;
+  const galleryConfig = getActiveGallery();
+
+  status.innerText = `Cargando ${galleryConfig.label}...`;
   gallery.innerHTML = "";
+  mediaItems = [];
+  renderedCount = 0;
+  currentIndex = 0;
+  preloadedUrls.clear();
   loadMoreBtn.hidden = true;
   selectionToggle.hidden = true;
+  resetSelectionControls();
+
+  if (thumbObserver) {
+    thumbObserver.disconnect();
+  }
 
   try {
-    const refs = await listStorageRefs();
+    const refs = await listStorageRefs(galleryConfig.prefix);
+    if (loadId !== galleryLoadId) return;
+
     mediaItems = buildMediaItems(refs);
 
     if (!mediaItems.length) {
-      status.innerText = "Aún no hay fotos ni vídeos.";
+      status.innerText = galleryConfig.emptyStatus;
       return;
     }
 
@@ -134,13 +202,15 @@ async function loadGallery() {
     setupThumbObserver();
     renderNextBatch();
   } catch (error) {
+    if (loadId !== galleryLoadId) return;
+
     console.error(error);
-    status.innerText = "Error cargando la galería.";
+    status.innerText = `Error cargando ${galleryConfig.label}.`;
   }
 }
 
-async function listStorageRefs() {
-  const folderRef = ref(storage, `${STORAGE_PREFIX}/`);
+async function listStorageRefs(storagePrefix) {
+  const folderRef = ref(storage, `${storagePrefix}/`);
   const refs = [];
   let pageToken;
 
@@ -365,6 +435,18 @@ async function getMediaUrl(item, size) {
   const targetRef = size === "thumb" && item.thumbRef ? item.thumbRef : item.fullRef;
   item[cacheKey] = await getDownloadURL(targetRef);
   return item[cacheKey];
+}
+
+function resetSelectionControls() {
+  selectedIndices.clear();
+  selectionMode = false;
+  gallery.classList.remove("selection-mode");
+  selectionToggle.classList.remove("active");
+  selectionToggle.setAttribute("aria-pressed", "false");
+  selectionToggleLabel.textContent = "Seleccionar fotos";
+  selectionActions.hidden = true;
+  downloadSelectedBtn.disabled = true;
+  updateSelectionUI();
 }
 
 function setSelectionMode(enabled) {

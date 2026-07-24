@@ -6,7 +6,7 @@
   <title>Galería de la boda 📸</title>
   <link rel="preconnect" href="https://www.gstatic.com" crossorigin>
   <link rel="preconnect" href="https://firebasestorage.googleapis.com" crossorigin>
-  <link rel="stylesheet" href="style.css?v=20260620-1">
+  <link rel="stylesheet" href="style.css?v=20260724-1">
   <link rel="icon" href="../AppFotos/assets/favicon.ico">
 </head>
 
@@ -18,6 +18,15 @@
   <main class="container">
     <h1>Galería</h1>
     <h4>Mariana & Enrique</h4>
+
+    <nav class="gallery-tabs" aria-label="Galerias">
+      <button class="gallery-tab active" type="button" data-gallery-key="guest" aria-pressed="true">
+        Galer&iacute;a boda
+      </button>
+      <button class="gallery-tab" type="button" data-gallery-key="official" aria-pressed="false">
+        Fotos Fot&oacute;grafa
+      </button>
+    </nav>
 
     <div class="gallery-toolbar">
       <button
@@ -53,7 +62,7 @@
     <p id="status" class="status" aria-live="polite"></p>
   </main>
 
-  <script type="module" src="galeria.js?v=20260620-1"></script>
+  <script type="module" src="galeria.js?v=20260724-1"></script>
 
   <div
     id="fullscreen"
